@@ -1,105 +1,156 @@
-# Screen vs Real Image Detection
+# 🖥️ Screen vs Real Image Detection
 
-## Overview
+A deep learning-based computer vision project that classifies whether an input image is:
 
-This project detects whether an input image is:
+- 📷 A Real Photograph
+- 🖥️ A Photograph of a Digital Screen
 
-- Real Photograph
-- Photograph of a Screen
-
-The model is trained using transfer learning with EfficientNet-B0 and fine-tuned on a custom dataset.
+The project uses **Transfer Learning** with **EfficientNet-B0** and a custom-built dataset to achieve high classification performance while maintaining fast inference suitable for real-time applications.
 
 ---
 
-## Features
+# Features
 
 - EfficientNet-B0 Transfer Learning
-- Two-Stage Fine Tuning
+- Two-stage Fine-Tuning
 - Automatic Prediction
 - Confidence Score
-- Benchmarking
-- Confusion Matrix
+- ROC-AUC Evaluation
 - Threshold Optimization
+- Benchmarking Script
+- GPU/CPU Support
+- Interactive Prediction Tool
 
 ---
 
-## Project Structure
+# Model
 
-```text
-spot_fake/
-│
-├── data/
-├── checkpoints/
-├── benchmark/
-├── predictions/
-├── src/
-│   ├── train.py
-│   ├── predict.py
-│   ├── benchmark.py
-│   ├── evaluate.py
-│   ├── dataset.py
-│   ├── model.py
-│   ├── engine.py
-│   ├── config.py
-│   └── utils.py
-│
-├── requirements.txt
-└── README.md
-```
+Backbone
+
+- EfficientNet-B0 (ImageNet Pretrained)
+
+Classifier
+
+- Dropout
+- Fully Connected Layer
+- Softmax Output
+
+Loss
+
+- CrossEntropy Loss
+
+Optimizer
+
+- AdamW
+
+Learning Rate Scheduler
+
+- Cosine Annealing LR
 
 ---
 
-## Dataset
+# Dataset
 
-Classes:
+Custom Dataset
+
+Classes
 
 - Real Images
 - Screen Images
 
-Dataset Size:
+Dataset Statistics
 
-- Real: 244
-- Screen: 209
+| Class  | Images |
+| ------ | ------ |
+| Real   | 244    |
+| Screen | 209    |
+| Total  | 453    |
 
-Total Images:
-
-453
+Images were collected under various lighting conditions, camera angles, distances, reflections, and display devices to improve generalization.
 
 ---
 
-## Training
+# Training Strategy
 
-Model: EfficientNet-B0
+### Stage 1
 
-Optimizer: AdamW
-
-Scheduler: CosineAnnealingLR
-
-Loss: CrossEntropyLoss
-
-Training Strategy:
-
-Stage 1
-
+- Freeze EfficientNet backbone
 - Train classifier head
 
-Stage 2
+### Stage 2
 
-- Fine tune backbone
-
----
-
-## Evaluation Metrics
-
-- Accuracy: 89.01%
-- Precision: 97.06%
-- Recall: 87.57%
-- F1 Score: 88.84%
-- ROC-AUC: 95.80%
+- Unfreeze backbone
+- Fine-tune complete network
 
 ---
 
-## Running
+# Evaluation
+
+| Metric    | Score  |
+| --------- | ------ |
+| Accuracy  | 89.01% |
+| Precision | 97.06% |
+| Recall    | 87.57% |
+| F1 Score  | 88.84% |
+| ROC-AUC   | 95.80% |
+
+---
+
+# Benchmark
+
+Average GPU inference time
+
+8–10 ms
+
+Throughput
+
+100+ FPS (hardware dependent)
+
+Framework
+
+PyTorch
+
+---
+
+# Project Structure
+
+```text
+spot_fake/
+
+├── checkpoints/
+│   └── best_model.pth
+
+├── src/
+│   ├── benchmark.py
+│   ├── config.py
+│   ├── dataset.py
+│   ├── engine.py
+│   ├── evaluate.py
+│   ├── model.py
+│   ├── predict.py
+│   ├── train.py
+│   └── utils.py
+
+├── README.md
+├── requirements.txt
+└── .gitignore
+```
+
+---
+
+# Installation
+
+```bash
+git clone https://github.com/YOUR_USERNAME/screen-vs-real-image-detection.git
+
+cd screen-vs-real-image-detection
+
+pip install -r requirements.txt
+```
+
+---
+
+# Usage
 
 Train
 
@@ -127,28 +178,46 @@ python src/benchmark.py
 
 ---
 
-## Example Prediction
+# Example Prediction
 
-```text
+```
 Prediction : SCREEN IMAGE
 
 Confidence : 97.12 %
 
-Inference : 8.31 ms
+Inference Time : 8.31 ms
 ```
 
 ---
 
-## Future Improvements
+# Future Improvements
 
-- Larger Dataset
-- Mobile Deployment
-- ONNX Export
-- TensorRT Optimization
-- Multi-class Classification
+- Larger and more diverse dataset
+- ConvNeXt / EfficientNet-B3 backbone
+- ONNX export
+- TensorRT acceleration
+- Mobile deployment
+- Web application using Streamlit or FastAPI
 
 ---
 
-## Author
+# Tech Stack
 
-Somesh Varshney
+- Python
+- PyTorch
+- TorchVision
+- Albumentations
+- NumPy
+- OpenCV
+- Matplotlib
+- Scikit-learn
+
+---
+# Screenshots
+![alt text](<images (1).jpeg>)
+![alt text](<WhatsApp Image 2026-07-02 at 3.37.32 PM.jpeg>)
+
+
+# Author
+
+**Somesh Varshney**
