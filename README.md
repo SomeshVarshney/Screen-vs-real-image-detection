@@ -213,10 +213,10 @@ Inference Time : 8.31 ms
 - Scikit-learn
 
 ---
-# Screenshots
-![alt text](<images (1).jpeg>)
-![alt text](<WhatsApp Image 2026-07-02 at 3.37.32 PM.jpeg>)
-
+# Results
+### Prediction Example
+![real](spot_fake\images\images (1).jpeg)
+![screen](spot_fake/images/WhatsApp Image 2026-07-02 at 3.37.32 PM.jpeg
 
 # Author
 
