@@ -1,0 +1,27 @@
+# Dataset
+data/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+venv/
+
+# Generated predictions
+predictions/
+
+# Benchmark outputs
+benchmark/
+
+# Checkpoints
+checkpoints/
+!checkpoints/README.md
+
+# VS Code
+.vscode/
+*.docx
+
+# OS files
+.DS_Store
+Thumbs.db
