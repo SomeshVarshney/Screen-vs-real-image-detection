@@ -17,6 +17,7 @@ benchmark/
 # Checkpoints
 checkpoints/
 !checkpoints/README.md
+!checkpaints/best_model.pth
 
 # VS Code
 .vscode/
